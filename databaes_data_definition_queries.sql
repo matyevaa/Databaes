@@ -1,4 +1,4 @@
---Team Databaes. Data Definition Queries.
+-- Team Databaes. Data Definition Queries.
 
 -- Table structure for table `senders`
 
