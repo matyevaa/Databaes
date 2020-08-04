@@ -26,6 +26,7 @@
 						<th>Gift Card Received</th>
         			</thead>
         			<tbody>
+					{{#each OrderHistory}}
 					<tr>
 				      		  <td>{{orderID}}</td>
 						  <td>{{trackerID}}</td>
@@ -34,5 +35,6 @@
 						  <td>{{quantity}}</td>
 						  <td>{{name}}</td>
 				   	</tr>
+					{{/each}}
 				</tbody>
 		  	</table>
