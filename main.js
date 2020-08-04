@@ -19,12 +19,18 @@ app.set('view engine', 'handlebars');
 app.set('port', 31312);
 app.set('mysql', mysql);
 
+app.use('/', express.static('public'));
 app.use('/senders', require('./senders.js'));
 app.use('/recipients', require('./recipients.js'));
 app.use('/giftCards', require('./giftCards.js'));
 app.use('/orderHistory', require('./orderHistory.js'));
 app.use('/orders', require('./orders.js'));
-app.use('/', express.static('public'));
+
+app.use('/senders.html', require('./senders.js'));
+app.use('/recipients.html', require('./recipients.js'));
+app.use('/giftCards.html', require('./giftCards.js'));
+app.use('/orderHistory.html', require('./orderHistory.js'));
+app.use('/orders.html', require('./orders.js'));
 
 app.use(function(req,res){
   res.status(404);
