@@ -19,14 +19,17 @@
 		<th>Price</th>
 	</thead>
 	<tbody>
-		<tr>
-			<td>{{name}}</td>
-			<td>{{quantity}}</td>
-			<td>{{price}}</td>
-			<td><button class="btn" id="deleteBtn"><i class="fa fa-minus"></i></button></td>
-		</tr>
+		{{each GiftCards}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{quantity}}</td>
+				<td>{{price}}</td>
+				<td><button onlclick="deleteGiftCard({{giftCardID}})"><i class="fa fa-minus"></i></button></td>
+				<td><a href="/giftCards/{{giftCardID}}">Update</a></td>
+			</tr>
+		{{/each}}
 	</tbody>
 </table>
 
-			<button id= "addBtn" style="width: 60px; margin-left: 950px; margin-top: 5px; margin-bottom: 4px;">Add</button>
-			<button id= "editBtn" style="width: 60px; margin-left: 950px; margin-top: 5px; margin-bottom: 4px;">Edit</button>
+			/*<button id= "addBtn" style="width: 60px; margin-left: 950px; margin-top: 5px; margin-bottom: 4px;">Add</button>
+			*/
