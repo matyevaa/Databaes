@@ -18,26 +18,21 @@
 					
 					<label for="rEmail">Recipient Email: </label>
 					<input type="email" id="rEmail" name="rEmail" value="foo@bar">
-					
-					<input type="radio" id="Amazon" name="giftCard" value="Amazon">
-					<label for="Amazon">Amazon</label>
-					
-					<input type="radio" id="Ebay" name="giftCard" value="Ebay">
-					<label for="Ebay">Ebay</label>
-					
-					<input type="radio" id="Starbucks" name="giftCard" value="Starbucks">
-					<label for="Starbucks">Starbucks</label>
-					
-					<input type="radio" id="Netflix" name="giftCard" value="Netflix" checked>
-					<label for="Netflix">Netflix</label>
-					
-					<input type="radio" id="Target" name="giftCard" value="Target">
-					<label for="Target">Target</label>
-					
-					<label for="Amount"> Amount: $</label>
-					<input type="number" id="Amount" name ="Amount" value ="1000">
-				</div>		
-			</form>
+					 
+					 
+			<form id="orders" action="/orders" method="post">
+    				Sender Email (optional): <input type="text" name="fname"><br>
+    				Recipient Email: <input type="text" name="lname"><br>
+    				GiftCard Name: <select name="giftcard"> 
+        				{{#each GiftCards}}
+        					<option value="{{giftCardID}}">{{name}}</option>
+        				{{/each}}
+    				</select><br>
+    				Price: <input type="number" name="price"><br>
+    				<input type="submit" value="Submit">
+ 			</form>
+			<br/>
+
 			<input type="button" id="addLines" value="+">Add Lines</button><br>
 			<br/>
 
