@@ -1,55 +1,116 @@
-	<br/>
-	<hr>
-	<h3 style="font-size: 30px; text-align: center;">Place an Order</h3>
-	<hr>
-	<br/>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta charset="utf-8">
+		<title>Gift Cards</title>		
+		<link rel="stylesheet" type="text/css" href="style.css">
+	
+	</head>
+		
+	<body>
 
-	<p>Users will be able to come to this page to place their orders.
-		They will put in their name, the name and email of the recipient,
-		pick a reward, and type in an amount.  They can click the "+" button
-		to add another line, or hit "Place Order" to submit their order.</p>
+		<div style="margin-left: 185px;">
+			<img src="databaes.png" id=card3>
+			<img src="giftcard.png" id="card1">
+		</div>
 
-	<br/>
-	<div>
-				 
-			<form id="orders" action="/orders" method="post">
-    				Sender Email (optional): <input type="text" name="sender_email"><br>
-    				Recipient Email: <input type="text" name="recipient_email"><br>
-    				GiftCard Name: <select name="giftcard"> 
-        				{{#each giftCards}}
-        					<option value="{{giftCardID}}">{{name}}</option>
-        				{{/each}}
-    				</select><br>
-    				Price: <input type="number" name="price"><br>
-    				<input type="submit" value="Submit">
- 			</form>
+	
+
+    <div class="nav" id="myNav">
+    	<div style="align-items: center;">
+    	    <ul>
+    		    <li><a href="index.html">Home</a></li>
+    		    <li><a href="/senders" >Senders</a></li>
+    		    <li><a href="/recipients">Recipients</a></li>
+    		    <li><a href="/giftcards">GiftCards</a></li>
+    		    <li><a href="/orders" class ='current'>Orders</a></li>
+    	    	<li><a href="/orderhistory">Orders History</a></li>
+    	    </ul>
+    	</div>
+	</div>
+		
+		<br/>
+		<hr>
+		<h3 style="font-size: 30px; text-align: center;">Place an Order</h3>
+		<hr>
+		<br/>
+		
+		<div>
+			<p>Users will be able to come to this page to place their orders.
+			  They will put in their name, the name and email of the recipient,
+			  pick a reward, and type in an amount.  They can click the "+" button
+			  to add another line, or hit "Place Order" to submit their order.</p>
+		</div>
+
+		<br/>
+		<div>
+
+		<div>
+			<form id="orders">
+				<div>
+					<label for="fromName">Sender Email (optional): </label>
+					<input type="text" id="fromName" name="fromName" value="fet@chet.net">
+					
+					<label for="rEmail">Recipient Email: </label>
+					<input type="email" id="rEmail" name="rEmail" value="foo@bar">
+					
+					<input type="radio" id="Amazon" name="giftCard" value="Amazon">
+					<label for="Amazon">Amazon</label>
+					
+					<input type="radio" id="Ebay" name="giftCard" value="Ebay">
+					<label for="Ebay">Ebay</label>
+					
+					<input type="radio" id="Starbucks" name="giftCard" value="Starbucks">
+					<label for="Starbucks">Starbucks</label>
+					
+					<input type="radio" id="Netflix" name="giftCard" value="Netflix" checked>
+					<label for="Netflix">Netflix</label>
+					
+					<input type="radio" id="Target" name="giftCard" value="Target">
+					<label for="Target">Target</label>
+					
+					<label for="Amount"> Amount: $</label>
+					<input type="number" id="Amount" name ="Amount" value ="1000">
+				</div>		
+			</form>
+			<input type="button" id="addLines" value="+">Add Lines</button><br>
 			<br/>
 
-			<input type="button" id="addLines" value="+">Add Order</button><br>
-			<br/>
+		</div>
+		
+			<button id="placeOrder" style="width: 120px; margin-top: 5px; margin-bottom: 4px; margin-left: 620px;">Place Order</button>
+		</div>
+		<br/>
+	<h3>Order placed!</h3>
+    <table>
+        <thead> 
+            <th>orderID</th> 
+            <th>trackerID</th> 
+            <th>sender email</th>
+            <th>recipient email</th>
+            <th>reward name</th>  
+            <th>amount</th>  
+        </thead> 
+        <tbody>
+            {{#each people}} 
+            <tr> 
+                <td>{{orderID}}</td> 
+                <td>{{trackerID}}</td> 
+                <td>{{email}}</td>
+                <td>{{email}}</td> 
+                <td>{{name}}</td>
+                <td>{{amount}}</td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+</table> 
 
-	</div>
-
-	<button id="placeOrder" style="width: 120px; margin-top: 5px; margin-bottom: 4px; margin-left: 620px;">Place Order</button>
-
-	<br/>
-	<div style="margin-left: 50px;">
-			<table>
-				<thead>
-					<th>Sender Email</th>
-					<th>Recipient Email</th>
-					<th>GiftCard Name</th>
-					<th>Quantity</th>
-				</thead>
-				<tbody>
-					{{#each orders}}
-					<tr>
-						<td>{{sender_email}}</td>
-						<td>{{recipient_email}}</td>
-						<td>{{name}}</td>
-						<td>{{quantity}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table> 
-	</div>
+		<!--a footer-->
+		<div class="footer">
+			<p id="footer" style="padding-top: 22px;">Made by Databaes Team</p>
+			<p id="footer">Oregon State University</p>
+			<p id="footer">Summer 2020</p>
+		</div>
+	</body>
+</html>
