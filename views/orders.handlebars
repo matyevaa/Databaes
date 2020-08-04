@@ -48,26 +48,19 @@
 	<br/>
 	<div style="margin-left: 50px;">
 			<table>
-				<caption>Order Placed!</caption>
+				<thead>
+					<th>Sender Email</th>
+					<th>Recipient Email</th>
+					<th>GiftCard Name</th>
+					<th>Quantity</th>
+				</thead>
 				<tbody>
 					<tr>
-						<th>Sender Email:</th>
-						<th>Recipient Email:</th>
-						<th>GiftCard Name:</th>
-						<th>Amount:</th>
-					</tr>
-					<tr>
-						<td>fet@chet.net</td>
-						<td>foo@bar.com</td>
-						<td>Netflix</td>
-						<td>$1000</td>
-					</tr>
-					<tr id='newRow' style="display: none;">
-						<td>NULL</td>
-						<td>far@car.org</td>
-						<td>Amazon</td>
-						<td>$1</td>
+						<td>{{sender_email}}</td>
+						<td>{{recipient_email}}</td>
+						<td>{{name}}</td>
+						<td>{{quantity}}</td>
 					</tr>
 				</tbody>
 			</table> 
-		</div>
+	</div>
