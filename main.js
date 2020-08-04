@@ -22,7 +22,7 @@ app.set('mysql', mysql);
 app.use('/senders', require('./senders.js'));
 app.use('/recipients', require('./recipients.js'));
 app.use('/giftCards', require('./giftCards.js'));
-app.use('/orderHistory', require('./orderHistory.js'));
+app.use('/orderHistory', require('./order_history.js'));
 app.use('/orders', require('./orders.js'));
 app.use('/', express.static('public'));
 
