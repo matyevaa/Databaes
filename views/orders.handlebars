@@ -1,0 +1,73 @@
+	<br/>
+	<hr>
+	<h3 style="font-size: 30px; text-align: center;">Place an Order</h3>
+	<hr>
+	<br/>
+
+	<p>Users will be able to come to this page to place their orders.
+		They will put in their name, the name and email of the recipient,
+		pick a reward, and type in an amount.  They can click the "+" button
+		to add another line, or hit "Place Order" to submit their order.</p>
+
+	<br/>
+	<div>
+			<form id="orders">
+				<div>
+					<label for="fromName">Sender Email (optional): </label>
+					<input type="text" id="fromName" name="fromName" value="fet@chet.net">
+					
+					<label for="rEmail">Recipient Email: </label>
+					<input type="email" id="rEmail" name="rEmail" value="foo@bar">
+					
+					<input type="radio" id="Amazon" name="giftCard" value="Amazon">
+					<label for="Amazon">Amazon</label>
+					
+					<input type="radio" id="Ebay" name="giftCard" value="Ebay">
+					<label for="Ebay">Ebay</label>
+					
+					<input type="radio" id="Starbucks" name="giftCard" value="Starbucks">
+					<label for="Starbucks">Starbucks</label>
+					
+					<input type="radio" id="Netflix" name="giftCard" value="Netflix" checked>
+					<label for="Netflix">Netflix</label>
+					
+					<input type="radio" id="Target" name="giftCard" value="Target">
+					<label for="Target">Target</label>
+					
+					<label for="Amount"> Amount: $</label>
+					<input type="number" id="Amount" name ="Amount" value ="1000">
+				</div>		
+			</form>
+			<input type="button" id="addLines" value="+">Add Lines</button><br>
+			<br/>
+
+	</div>
+
+	<button id="placeOrder" style="width: 120px; margin-top: 5px; margin-bottom: 4px; margin-left: 620px;">Place Order</button>
+
+	<br/>
+	<div style="margin-left: 50px;">
+			<table>
+				<caption>Order Placed!</caption>
+				<tbody>
+					<tr>
+						<th>Sender Email:</th>
+						<th>Recipient Email:</th>
+						<th>GiftCard Name:</th>
+						<th>Amount:</th>
+					</tr>
+					<tr>
+						<td>fet@chet.net</td>
+						<td>foo@bar.com</td>
+						<td>Netflix</td>
+						<td>$1000</td>
+					</tr>
+					<tr id='newRow' style="display: none;">
+						<td>NULL</td>
+						<td>far@car.org</td>
+						<td>Amazon</td>
+						<td>$1</td>
+					</tr>
+				</tbody>
+			</table> 
+		</div>
