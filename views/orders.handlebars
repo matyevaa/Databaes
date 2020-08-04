@@ -11,18 +11,10 @@
 
 	<br/>
 	<div>
-			<form id="orders">
-				<div>
-					<label for="fromName">Sender Email (optional): </label>
-					<input type="text" id="fromName" name="fromName" value="fet@chet.net">
-					
-					<label for="rEmail">Recipient Email: </label>
-					<input type="email" id="rEmail" name="rEmail" value="foo@bar">
-					 
-					 
+				 
 			<form id="orders" action="/orders" method="post">
-    				Sender Email (optional): <input type="text" name="fname"><br>
-    				Recipient Email: <input type="text" name="lname"><br>
+    				Sender Email (optional): <input type="text" name="sender_email"><br>
+    				Recipient Email: <input type="text" name="recipient_email"><br>
     				GiftCard Name: <select name="giftcard"> 
         				{{#each GiftCards}}
         					<option value="{{giftCardID}}">{{name}}</option>
@@ -33,7 +25,7 @@
  			</form>
 			<br/>
 
-			<input type="button" id="addLines" value="+">Add Lines</button><br>
+			<input type="button" id="addLines" value="+">Add Order</button><br>
 			<br/>
 
 	</div>
