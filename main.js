@@ -4,7 +4,7 @@
 */
 
 var express = require('express');
-var mysql = require('./dbcon.js');
+var mysql = require('./340_setup.js');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -16,21 +16,14 @@ app.engine('handlebars', handlebars.engine);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/static', express.static('public'));
 app.set('view engine', 'handlebars');
-app.set('port', 31312);
+app.set('port', process.argv[2]);
 app.set('mysql', mysql);
-
-app.use('/', express.static('public'));
-app.use('/senders', require('./senders.js'));
 app.use('/recipients', require('./recipients.js'));
-app.use('/giftCards', require('./giftCards.js'));
-app.use('/orderHistory', require('./orderHistory.js'));
-app.use('/orders', require('./orders.js'));
-
-app.use('/senders.html', require('./senders.js'));
-app.use('/recipients.html', require('./recipients.js'));
-app.use('/giftCards.html', require('./giftCards.js'));
-app.use('/orderHistory.html', require('./orderHistory.js'));
-app.use('/orders.html', require('./orders.js'));
+app.use('/senders', require('./senders.js'));
+app.use('/giftcards', require('./giftcards.js'));
+app.use('/orderhistory', require('./orderhistory.js'))
+app.use('/orders', require('./orders.js'))
+app.use('/', express.static('public'));
 
 app.use(function(req,res){
   res.status(404);
