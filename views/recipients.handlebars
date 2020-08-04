@@ -6,38 +6,23 @@
 <p>Recipients can come to this page and search for orders by their name.  This will update the page with all the order lines associated with that particular name.</p>
 
 <form>
- <input type="text" id="recipient" value="Foo Bar">
-				<button id="showTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
+	<input type="text" id="recipient" value="Foo Bar">
+	<button id="showTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
 </form>
-      
-		<div id="recipientResults" style="display:block">
-			<h3>Orders for Recipient:</h1>
-			<table id= allResults style="display: block; border: 1px;">
-				<tbody>
-					<tr>
-						<th>Recipient Name</th>
-						<th>Recipient Email</th>
-						<th>Gift Card Received</th>
-						<th>Amount</th>
-					</tr>
-					<tr>
-						<td>Foo Bar</td>
-						<td>foo@bar.com</td>
-						<td>Target</td>
-						<td>$5</td>
-					</tr>
-					<tr>
-						<td>Far Car</td>
-						<td>far@car.net</td>
-						<td>Ebay</td>
-						<td>$500</td>
-					</tr>
-					<tr>
-						<td>Fer Zar</td>
-						<td>fer@zar.org</td>
-						<td>Amazon</td>
-						<td>$1</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+
+<h3>Orders for Recipient:</h1>
+<table>
+		<thead>
+			<th>Recipient Email</th>
+			<th>Gift Card Received</th>
+			<th>Quantity</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{recipient_email}}</td>
+				<td>{{name}}</td>
+				<td>{{quantity}}</td>
+			</tr>
+		</tbody>
+</table>
+	
