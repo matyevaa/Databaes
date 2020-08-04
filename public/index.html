@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta charset="utf-8">
+		<title>Gift Cards</title>		
+		<link rel="stylesheet" type="text/css" href="style.css">
+	
+	</head>
+		
+	<body>
+
+		<div style="margin-left: 185px;">
+			<img src="databaes.png" id=card3>
+			<img src="giftcard.png" id="card1">
+		</div>
+
+
+		<div class="nav" id="myNav">
+			<div style="align-items: center;">
+				<ul>
+					<li><a href="index.html" class="current">Home</a></li>
+					<li><a href="senders.html">Senders</a></li>
+					<li><a href="recipients.html">Recipients</a></li>
+					<li><a href="giftcards.html">GiftCards</a></li>
+					<li><a href="orders.html">Orders</a></li>
+					<li><a href="order_history.html">Orders History</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<img src="giftcards.png" id="card2">
+		<div id="panel">
+			<p>LetвЂ™s make the last minute gift easier than ever. Instead of going to the store, buying gift cards and sending them out manually in the mail, we can just use Gift Cards Delivery for more convenience. The database will allow Senders to send from 1 to 1,000 digital gift cards to one or many different Recipients at the same time. Such a system would have something to offer for anyone, from small business to megacorporations.  
+			</p>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<hr>
+		<div style="text-align: center; font-family: georgia;">
+			<p><h4>Senders: Required queries(Select) Optional queries(Select).</h4>  Uses Select on page load to pull current table of senders in the DB.  Comes with searchbar to search DB for orders sent by Sender Email. </p>
+			<p><h4>Recipients: Required queries (Select) Optional queries(Select, Delete).</h4>Uses Select on page load to pull current table of recipients in the DB.  Comes with searchbar to search DB for orders sent to Recipient Email. Also has a delete button that will delete the recipient email from the recipients and orders tables.</p>
+			<p><h4>GiftCards: Required queries (Select) Optional queries(Delete, Insert, Update).</h4>Uses Select on page load to pull current table of gift cards in the DB.  Users have the option to add or delete gift cards from the DB, and can update the quantity of a Gift Card as well.</p>
+			<p><h4>Orders: Optional queries(Select, Insert, Update).</h4>When an order is placed, this Inserts data from an order to Orders and Order_History Table.  <br>Will insert recipient and sender data in their respective tables if it doesn't already exist, else it will update that data.  It will also update the Gift Cards table with the new invetory levels.  </br><br>It will run Select on the Orders table to return an overview of what was just ordered.</br></p>
+			<p><h4>Order History: Required queries (Select) Optional queries(Select). </h4>Uses Select on page load to pull current table of orders sent in the DB.  Comes with searchbar to search DB for orders sent by Order Number</p>
+		</div>
+
+		<!--a footer-->
+		<div class="footer">
+			<p id="footer" style="padding-top: 22px;">Made by Databaes Team</p>
+			<p id="footer">Oregon State University</p>
+			<p id="footer">Summer 2020</p>
+		</div>
+
+	</body>
+</html>
