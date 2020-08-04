@@ -16,7 +16,7 @@
     				Sender Email (optional): <input type="text" name="sender_email"><br>
     				Recipient Email: <input type="text" name="recipient_email"><br>
     				GiftCard Name: <select name="giftcard"> 
-        				{{#each GiftCards}}
+        				{{#each giftCards}}
         					<option value="{{giftCardID}}">{{name}}</option>
         				{{/each}}
     				</select><br>
@@ -42,12 +42,14 @@
 					<th>Quantity</th>
 				</thead>
 				<tbody>
+					{{#each orders}}
 					<tr>
 						<td>{{sender_email}}</td>
 						<td>{{recipient_email}}</td>
 						<td>{{name}}</td>
 						<td>{{quantity}}</td>
 					</tr>
+					{{/each}}
 				</tbody>
 			</table> 
 	</div>
