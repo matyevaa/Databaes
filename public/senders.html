@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta charset="utf-8">
+		<title>Gift Cards</title>		
+		<link rel="stylesheet" type="text/css" href="style.css">
+	
+	</head>
+		
+	<body>
+
+		<div style="margin-left: 185px;">
+			<img src="databaes.png" id=card3>
+			<img src="giftcard.png" id="card1">
+		</div>
+
+
+		<div class="nav" id="myNav">
+			<div style="align-items: center;">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="senders.html" class="current">Senders</a></li>
+					<li><a href="recipients.html">Recipients</a></li>
+					<li><a href="giftcards.html">GiftCards</a></li>
+					<li><a href="orders.html">Orders</a></li>
+					<li><a href="order_history.html">Orders History</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<br/>
+		<hr>
+		<h3 style="font-size: 30px; text-align: center;">Senders</h3>
+		<hr>
+		<br/>
+
+		<div style="margin-top: 30px;">
+			<p>Senders can come to this page and search for orders by their name. This will update
+		the page with all the order lines associated with that particular name.</p>
+			<input type="text" id="username" value="great_america@gmail.com">
+			<button id="showTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>
+		</div>
+
+		<br/>
+
+		<div id="senderResults" style="margin-left: 50px;">
+			<table  id="allResults">
+		   		<tr>
+		   			<th>Sender Email</th>
+		            <th>GiftCard Name</th>
+		            <th>Quantity</th>
+		            <th>Amount</th>
+		        </tr>
+		   		<tr>
+		   			<td>great_america@gmail.com</td>
+		            <td>Amazon</td>
+		            <td>2</td>
+		            <td>$10</td>
+
+		        </tr>
+		        <tr>
+		        	<td>hello_world@gmail.com</td>
+		            <td>Starbucks</td>
+		            <td>5</td>
+		            <td>$150</td>
+		        </tr>
+		        <tr>
+		        	<td>myoregon@gmail.com</td>
+		            <td>Target</td>
+		            <td>4</td>
+		            <td>$320</td>
+		        </tr>
+			</table> 
+		</div>
+		
+		<script src="senders_script.js>
+		</script>
+
+
+		<!--a footer-->
+		<div class="footer">
+			<p id="footer" style="padding-top: 22px;">Made by Databaes Team</p>
+			<p id="footer">Oregon State University</p>
+			<p id="footer">Summer 2020</p>
+		</div>
+
+	</body>
+</html>

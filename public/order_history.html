@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta charset="utf-8">
+		<title>Gift Cards</title>		
+		<link rel="stylesheet" type="text/css" href="style.css">
+	
+	</head>
+		
+	<body>
+
+		<div style="margin-left: 185px;">
+			<img src="databaes.png" id=card3>
+			<img src="giftcard.png" id="card1">
+		</div>
+
+
+		<div class="nav" id="myNav">
+			<div style="align-items: center;">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="senders.html">Senders</a></li>
+					<li><a href="recipients.html">Recipients</a></li>
+					<li><a href="giftcards.html">GiftCards</a></li>
+					<li><a href="orders.html">Orders</a></li>
+					<li><a href="order_history.html" class="current">Orders History</a></li>
+				</ul>
+			</div>
+		</div>
+	
+		<br/>
+		<hr>
+		<h3 style="font-size: 30px; text-align: center;">Order History</h3>
+		<hr>
+		<br/>
+		<p>Users can come to this page and search for orders by Order Id.  This will update
+		the page with all the order lines associated with that particular Order Id.</p>
+		
+	
+		<div>
+			<form>
+				<input type="text" id="recipient" value="678901">
+				<button id="showTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
+			</form>
+		</div>
+		
+		<div id="orderResults">
+			<h3>Orders for Order Id:</h1>
+				<table id= allResults style="display: block; border: 1px;">
+				<tbody>
+					<tr>
+						<th>Order ID</th>
+						<th>trackerID</th>
+						<th>Sender Email</th>
+						<th>Recipient Email</th>
+						<th>Amount</th>
+						<th>Gift Card Received</th>
+
+					</tr>
+					<tr>
+						<td>012345</td>
+						<td>1</td>
+						<td>foo@bar.com</td>
+						<td>far@car.net</td>
+						<td>$5</td>
+						<td>Target</td>
+					</tr>
+					<tr>
+						<td>012345</td>
+						<td>2</td>
+						<td>foo@bar.com</td>
+						<td>fet@cet.net</td>
+						<td>$500</td>
+						<td>Ebay</td>
+					</tr>
+					<tr>
+						<td>012345</td>
+						<td>3</td>
+						<td>foo@bar.com</td>
+						<td>far@car.org</td>
+						<td>$1</td>
+						<td>Amazon</td>
+					</tr>
+					<tr>
+						<td>678901</td>
+						<td>1</td>
+						<td>fet@chet.net</td>
+						<td>foo@bar.org</td>
+						<td>$1000</td>
+						<td>Netflix</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		
+		<script src="order_history_script.js">		
+			
+		</script>
+
+		<!--a footer-->
+		<div class="footer">
+			<p id="footer" style="padding-top: 22px;">Made by Databaes Team</p>
+			<p id="footer">Oregon State University</p>
+			<p id="footer">Summer 2020</p>
+		</div>
+
+	</body>
+</html>
