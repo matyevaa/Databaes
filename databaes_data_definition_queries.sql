@@ -71,7 +71,7 @@ INSERT INTO `recipients` (`recipientID`, `recipient_email`) VALUES
 (3, "recipient3@gmail.com"),
 (4, NULL);
 
-INSERT INTO `GiftCards` (`giftCardID`, `name`,`quantity`, `price`) VALUES
+INSERT INTO `GiftCards` (`giftCardID`, `name`,`quantity`) VALUES
 (1, "Amazon", 150),
 (2, "Starbucks", 300),
 (3, "Target", 400);
