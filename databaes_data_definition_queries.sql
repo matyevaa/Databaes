@@ -27,7 +27,6 @@ CREATE TABLE `GiftCards` (
 `giftCardID` INT(11) primary key NOT NULL AUTO_INCREMENT,
 `name` varchar(255) NOT NULL,
 `quantity` int(11),
-`price` int(11),
  UNIQUE(giftCardID)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -48,7 +47,7 @@ CREATE TABLE `orders`(
 	`orderID` int(11) NOT NULL,
     `recipient_email` varchar(255),
 	`giftCardID` int(11) NOT NULL,
-	`quantity` int(11) NOT NULL,
+	`price` int(11) NOT NULL,
 	CONSTRAINT Orders_fk_1 FOREIGN KEY orders(`orderID`) REFERENCES OrderHistory(`orderID`),
 	CONSTRAINT Orders_fk_2 FOREIGN KEY orders(`giftCardID`) REFERENCES GiftCards(`giftCardID`),
 	CONSTRAINT Orders_fk_3 FOREIGN KEY orders(`recipient_email`) REFERENCES recipients(`recipient_email`),
