@@ -28,6 +28,16 @@
 		</form>
 	</div>
  
+   <h3>Add a new sender:</h3>
+    <form id="addsender" action="/senders" method="post">
+      Sender Email: <input type="text" name="email"><br>
+      Giftcard name to send: <input type="text" name="name"><br>
+      The amount of the giftcard: <input type="number" name="amount"><br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <br/>
+ 
     <table>
         <thead> 
             <th>email</th>
@@ -46,15 +56,5 @@
             {{/each}} 
         </tbody> 
 </table> 
-
-  <h3>Add a new sender:</h3>
-    <form id="addsender" action="/senders" method="post">
-      Sender Email: <input type="text" name="email"><br>
-      Giftcard name to send: <input type="text" name="name"><br>
-      The amount of the giftcard: <input type="number" name="amount"><br>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <br/>
 
 </html>
