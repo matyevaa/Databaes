@@ -5,7 +5,7 @@ module.exports = function(){
 
 
     function getPeople(res, mysql, context, complete){
-        mysql.pool.query("SELECT name, quantity, price FROM GiftCards", function(error, results, fields){
+        mysql.pool.query("SELECT name, quantity FROM GiftCards", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
