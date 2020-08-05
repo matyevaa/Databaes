@@ -55,9 +55,9 @@ CREATE TABLE `orders`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
---*******************
---INSERT SAMPLE DATA.
---*******************
+-- *******************
+-- INSERT SAMPLE DATA.
+-- *******************
 
 INSERT INTO `senders` (`senderID`, `sender_email`) VALUES
 (1, "sender1@gmail.com"),
