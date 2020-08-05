@@ -26,6 +26,19 @@
 			<button id="searchTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
 		</form>
 	</div>
+	
+	<h3>Add a new recipient:</h3>
+    <form id="addrecipient" action="/recipients" method="post">
+      Order ID: <input type="number" name="orderID"><br>
+      Recipient Email: <input type="text" name="email"><br>
+      Giftcard name received: <input type="text" name="name"><br>
+      The amount of the giftcard: <input type="number" name="amount"><br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <br/>
+	
+	
 	<h3>Orders for Recipient:</h3>
     <table>
         <thead> 
@@ -49,16 +62,5 @@
             {{/each}} 
         </tbody> 
 </table> 
-
-<h3>Add a new recipient:</h3>
-    <form id="addrecipient" action="/recipients" method="post">
-      Order ID: <input type="number" name="orderID"><br>
-      Recipient Email: <input type="text" name="email"><br>
-      Giftcard name received: <input type="text" name="name"><br>
-      The amount of the giftcard: <input type="number" name="amount"><br>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <br/>
 
 </html>
