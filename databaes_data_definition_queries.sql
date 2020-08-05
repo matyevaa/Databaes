@@ -72,20 +72,20 @@ INSERT INTO `recipients` (`recipientID`, `recipient_email`) VALUES
 (4, NULL);
 
 INSERT INTO `GiftCards` (`giftCardID`, `name`,`quantity`, `price`) VALUES
-(1, "Amazon", 150, 2),
-(2, "Starbucks", 300, 5),
-(3, "Target", 400, 8);
+(1, "Amazon", 150),
+(2, "Starbucks", 300),
+(3, "Target", 400);
 
 INSERT INTO `OrderHistory` (`orderID`, `sender_email`, `quantity`) VALUES
 (012345, "sender1@gmail.com", 30),
 (012346, "sender2@gmail.com", 50),
 (012347, "sender3@gmail.com", 100);
 
-INSERT INTO `orders` (`trackerID`, `orderID`, `recipient_email`, `giftCardID`, `quantity`) VALUES 
+INSERT INTO `orders` (`trackerID`, `orderID`, `recipient_email`, `giftCardID`, `price`) VALUES 
 (1, 012345, "recipient1@gmail.com", 1, 30);
 
-INSERT INTO `orders` (`trackerID`, `orderID`, `recipient_email`, `giftCardID`, `quantity`) VALUES 
+INSERT INTO `orders` (`trackerID`, `orderID`, `recipient_email`, `giftCardID`, `price`) VALUES 
 (2, 012346, "recipient2@gmail.com", 3, 20);
 
-INSERT INTO `orders` (`trackerID`, `orderID`, `recipient_email`, `giftCardID`, `quantity`) VALUES 
+INSERT INTO `orders` (`trackerID`, `orderID`, `recipient_email`, `giftCardID`, `price`) VALUES 
 (3, 012347, "recipient3@gmail.com", 2, 10);
