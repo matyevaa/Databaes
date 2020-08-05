@@ -5,7 +5,7 @@ module.exports = function(){
 
 
     function getPeople(res, mysql, context, complete){
-        mysql.pool.query("SELECT OrderHistory.orderID, orders.trackerID, orders.recipient_email, GiftCards.name, orders.price FROM orders LEFT JOIN recipients ON orders.recipient_email = recipients.recipient_email LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID", function(error, results, fields){
+        mysql.pool.query("SELECT OrderHistory.orderID, orders.trackerID, orders.recipient_email as email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN recipients ON orders.recipient_email = recipients.recipient_email LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
                 res.end();
