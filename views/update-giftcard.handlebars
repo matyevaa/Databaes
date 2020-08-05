@@ -1,0 +1,11 @@
+<html>
+  <h1>Update {{giftcard.name}}:</h1>
+  
+  <form id="update-giftcard" action="/giftcards" method="post">
+    Name: <input type="text" name="name" value="{{giftcard.name}}"><br>
+    Amount: <input type="number" name="quantity" value="{{giftcard.quantity}}"><br>
+  </form>
+  
+  <button onclick="updategiftcard({{giftcard.id}})">Update</button>
+
+</html>
