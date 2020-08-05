@@ -32,6 +32,16 @@ CREATE TABLE `GiftCards` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+DROP TABLE IF EXISTS `OrderHistory`;
+CREATE TABLE `OrderHistory`(
+	`orderID` int(11) primary key NOT NULL AUTO_INCREMENT,
+	`sender_email` varchar(255),
+    `quantity` int(11) NOT NULL,
+	CONSTRAINT OrderHistory_fk_1 FOREIGN KEY OrderHistory(`sender_email`) REFERENCES senders(`sender_email`),
+	UNIQUE(`orderID`)
+)Engine=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`(
 	`trackerID` int(11) primary key NOT NULL AUTO_INCREMENT,
@@ -44,16 +54,6 @@ CREATE TABLE `orders`(
 	CONSTRAINT Orders_fk_3 FOREIGN KEY orders(`recipient_email`) REFERENCES recipients(`recipient_email`),
 	UNIQUE(`trackerID`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `OrderHistory`;
-CREATE TABLE `OrderHistory`(
-	`orderID` int(11) primary key NOT NULL AUTO_INCREMENT,
-	`sender_email` varchar(255),
-    `quantity` int(11) NOT NULL,
-	CONSTRAINT OrderHistory_fk_1 FOREIGN KEY OrderHistory(`sender_email`) REFERENCES senders(`sender_email`),
-	UNIQUE(`orderID`)
-)Engine=InnoDB DEFAULT CHARSET=utf8;
 
 
 --*******************
