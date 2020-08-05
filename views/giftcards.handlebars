@@ -33,7 +33,7 @@
             <th>amount</th>  
         </thead> 
         <tbody>
-            {{#each people}} 
+            {{#each giftcards}} 
             <tr> 
                 <td>{{name}}</td>
                 <td>{{quantity}}</td>
@@ -43,6 +43,17 @@
             {{/each}} 
         </tbody> 
 </table> 
+
+    <h3>Add a new giftcard:</h3>
+    <form id="addgiftcard" action="/giftcards" method="post">
+      Gift Card Name: <input type="text" name="name"><br>
+      The amount of the giftcard: <input type="number" name="amount"><br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <br/>
+    
+ 
 <!--a footer-->
 <div class="footer">
 	<p id="footer" style="padding-top: 22px;">Made by Databaes Team</p>
