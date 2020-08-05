@@ -30,7 +30,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["deletegiftcard.js"];
         var mysql = req.app.get('mysql');
         getGiftCards(res, mysql, context, complete);
         function complete(){
@@ -93,6 +93,23 @@ module.exports = function(){
             }
         });
     });
+    
+    /* Route to delete a giftcard, simply returns a 202 upon success. Ajax will handle this. */
+    router.delete('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM GiftCards WHERE giftCardID = ?";
+        var inserts = [req.params.id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    })
     
 
     return router;
