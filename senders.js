@@ -32,18 +32,45 @@ module.exports = function(){
         
       /*Adds a sender, redirects to the senders page after adding */
     router.post('/', function(req, res){
-        console.log(req.body.homeworld)
         console.log(req.body)
         var mysql = req.app.get('mysql');
-        var sql = /*"INSERT INTO senders (sender_email) VALUES (?); INSERT INTO GiftCards (name) VALUES (?); INSERT INTO orders (price) VALUES (?)"*/;
-        var inserts = [req.body.email, req.body.name, req.body.amount];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+        
+        var email = req.body.email;
+        var name = req.body.name;
+        var amount = req.body.amount;
+        var sql = "INSERT IGNORE INTO `senders` (`sender_email`) VALUES (?);";
+        var sql2 = "INSERT IGNORE INTO `GiftCards` (`name`) VALUES (?);";
+        var sql3 = "INSERT IGNORE INTO `orders` (`price`) VALUES (?)";
+        
+        var inserts = [email];
+        var inserts2 = [name];
+        var inserts3 = [amount];
+        
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){    
             if(error){
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/senders');
+            }
+        });
+        
+        sql2 = mysql.pool.query(sql2,inserts2,function(error, results, fields){    
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+            }
+        });
+        
+        sql3 = mysql.pool.query(sql3,inserts3,function(error, results, fields){    
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+              res.redirect('/senders');
             }
         });
     });
