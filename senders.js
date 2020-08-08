@@ -13,12 +13,27 @@ module.exports = function(){
             complete();
         });
     }
+
+    /* Find people whose fname starts with a given string in the req */
+    function getSendersByEmail(req, res, mysql, context, complete) {
+      //sanitize the input as well as include the % character
+       var query = "SELECT senders.sender_email as email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN senders ON senders.sender_email = OrderHistory.sender_email WHERE senders.sender_email LIKE " + mysql.pool.escape(req.params.s + '%');
+      mysql.pool.query(query, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.senders = results;
+            complete();
+        });
+    }
+    
     /*Display all people. Requires web based javascript to delete users with AJAX*/
 
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = ["search_senders.js"];
         var mysql = req.app.get('mysql');
         getSenders(res, mysql, context, complete);
         function complete(){
@@ -29,10 +44,23 @@ module.exports = function(){
 
         }
     });
+
+    router.get('/search/:s', function(req, res){
+        var callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["search_senders.js"];
+        var mysql = req.app.get('mysql');
+        getSendersByEmail(req, res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('senders', context);
+            }
+        }
+    });
         
       /*Adds a sender, redirects to the senders page after adding */
     router.post('/', function(req, res){
-        console.log(req.body)
         var mysql = req.app.get('mysql');
         
         var email = req.body.email;
