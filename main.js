@@ -23,7 +23,6 @@ app.use('/senders', require('./senders.js'));
 app.use('/giftcards', require('./giftcards.js'));
 app.use('/orderhistory', require('./orderhistory.js'))
 app.use('/orders', require('./orders.js'))
-app.use('/', require('./create.js'));
 app.use('/', express.static('public'));
 
 
