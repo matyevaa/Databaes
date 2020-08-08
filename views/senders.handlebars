@@ -22,9 +22,11 @@
 	the page with all the order lines associated with that particular name.</p>
 
 	<div>
-		<form>
-			<input type="text" id="sender"></input>
-			<button id="searchTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
+		<form id='search_senders' action='' method=''>
+			<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    		<label> Search for orders by the sender email:</label>
+    		<input id='senders_search_string' type='text' name='senders_search_string' value=''>
+    		<input type="button" value="Search" onclick="search_senders()">
 		</form>
 	</div>
  
