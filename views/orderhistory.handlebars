@@ -18,16 +18,19 @@
 	<h3 style="font-size: 30px; text-align: center;">Order History</h3>
 	<hr>
 	<br/>
-	<p>Recipients can come to this page and search for orders by their name.  This will update
-	the page with all the order lines associated with that particular name.</p>
+	<p>Users can come to this page and search for orders by their orderID.  This will update
+	the page with all the order lines associated with that particular orderID.</p>
 
 	<div>
-		<form>
-			<input type="text" id="recipient"></input>
-			<button id="searchTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
+		<form id='search_orderhistory' action='' method=''>
+			<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    		<label> Search OrderHistory by orderID:</label>
+    		<input id='orderhistory_search_string' type='text' name='orderhistory_search_string' value=''>
+    		<input type="button" value="Search" onclick="search_orderhistory()">
 		</form>
 	</div>
-	<h3>Orders for Recipient:</h3>
+
+	<h3>Previous Orders:</h3>
     <table>
         <thead> 
             <th>orderID</th> 
@@ -38,7 +41,7 @@
             <th>amount</th>  
         </thead> 
         <tbody>
-            {{#each people}} 
+            {{#each OrderHistory}} 
             <tr> 
                 <td>{{orderID}}</td> 
                 <td>{{trackerID}}</td> 
