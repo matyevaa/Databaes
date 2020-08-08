@@ -44,7 +44,6 @@ module.exports = function(){
     
   /* Adds a giftcard, redirects to the GiftCards page after adding */
     router.post('/', function(req, res){
-        console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO GiftCards (name, quantity) VALUES (?,?)";
         var inserts = [req.body.name, req.body.quantity];
