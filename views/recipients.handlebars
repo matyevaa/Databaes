@@ -1,8 +1,4 @@
 <html>
-	<div style="margin-left: 185px;">
-	    <img src="databaes.png" id=card3>
-	    <img src="giftcard.png" id="card1">
-    </div>
 
     <div class="nav" id="myNav">
     	<div style="align-items: center;">
@@ -26,11 +22,14 @@
 	the page with all the order lines associated with that particular name.</p>
 
 	<div>
-		<form>
-			<input type="text" id="recipient"></input>
-			<button id="searchTable" style="width: 60px; margin-top: 5px; margin-bottom: 4px;">Submit</button>			
+		<form id='search_recipients' action='' method=''>
+			<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    		<label> Search for orders with the recipient email:</label>
+    		<input id='recipients_search_string' type='text' name='recipients_search_string' value=''>
+    		<input type="button" value="Search" onclick="search_recipients()">
 		</form>
 	</div>
+
 	<h3>Orders for Recipient:</h3>
     <table>
         <thead> 
@@ -41,7 +40,7 @@
             <th>amount</th>  
         </thead> 
         <tbody>
-            {{#each people}} 
+            {{#each recipients}} 
             <tr> 
                 <td>{{orderID}}</td> 
                 <td>{{trackerID}}</td> 
@@ -54,10 +53,5 @@
             {{/each}} 
         </tbody> 
 </table> 
-<!--a footer-->
-<div class="footer">
-	<p id="footer" style="padding-top: 22px;">Made by Databaes Team</p>
-	<p id="footer">Oregon State University</p>
-	<p id="footer">Summer 2020</p>
-</div>
+
 </html>
