@@ -10,7 +10,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            context.people = results;
+            context.orders = results;
             complete();
         });
     }
@@ -43,7 +43,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = [];
         var mysql = req.app.get('mysql');
         getOrders(res, mysql, context, complete);
         function complete(){
@@ -58,8 +58,7 @@ module.exports = function(){
     router.post('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        console.log(req.body)
-        context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
+        context.jsscripts = [];
         var mysql = req.app.get('mysql');
         var sEmail = req.body.sEmail;
         var rEmail = req.body.rEmail;
@@ -68,12 +67,12 @@ module.exports = function(){
         var sql = "INSERT IGNORE INTO `senders` (`sender_email`) VALUES (?);";
         var sql2 = "INSERT IGNORE INTO `recipients` (`recipient_email`) VALUES (?)";
         var sql3 = "INSERT IGNORE INTO  `GiftCards` (`name`, quantity) VALUES (?, 100)";
-        var sql4 = "INSERT INTO  `OrderHistory` (`sender_email`, quantity) VALUES (?, 1)";
+        var sql4 = "INSERT INTO  `OrderHistory` (`sender_email`, quantity) VALUES (?, ?)";
         var sql5 = "INSERT INTO `orders` (`orderID`, `recipient_email`, `giftCardID`, `price`) VALUES (?, ?, ?, ?);";
         var inserts = [sEmail];
         var inserts2 = [rEmail];
         var inserts3 = [giftCard];
-        var inserts4 = [sEmail];
+        var inserts4 = [sEmail, amount];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -112,12 +111,12 @@ module.exports = function(){
 
         getOrderID(res, mysql, context, complete);
         getGiftCardID(giftCard, res, mysql, context, complete);
+        getOrders(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 2){
+            if(callbackCount >= 3){
                 var orderID = context.orderID[0].orderID;
                 var giftCardID = context.giftCardID[0].giftCardID;
-                console.log(orderID, giftCardID)
                 var inserts5 = [orderID, rEmail, giftCardID, amount];
                 sql5 = mysql.pool.query(sql5,inserts5,function(error, results, fields){
                     if(error){
