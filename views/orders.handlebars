@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <html>
+
     <div class="nav" id="myNav">
     	<div style="align-items: center;">
     	    <ul>
-    		    <li><a href="index.html">Home</a></li>
+    		    <li><a href="/">Home</a></li>
     		    <li><a href="/senders" >Senders</a></li>
     		    <li><a href="/recipients">Recipients</a></li>
     		    <li><a href="/giftcards">GiftCards</a></li>
@@ -17,26 +17,20 @@
 		<hr>
 		<h3 style="font-size: 30px; text-align: center;">Place an Order</h3>
 		<hr>
-		<br/>
-		
-		<div>
-			<p>Users will be able to come to this page to place their orders.
+		<br/>	
+		<p>Users will be able to come to this page to place their orders.
 			  They will put in their name, the name and email of the recipient,
 			  pick a reward, and type in an amount.  They can click the "+" button
 			  to add another line, or hit "Place Order" to submit their order.</p>
-		</div>
-
-		<br/>
-		<div>
 
 		<div>
-			<form id="orders">
+			<form id="orders" class='form-control' action="/orders" method="post">
 				<div>
 					<label for="fromName">Sender Email (optional): </label>
-					<input type="text" id="fromName" name="fromName" value="fet@chet.net">
+					<input type="text" id="sEmail" name="sEmail">
 					
 					<label for="rEmail">Recipient Email: </label>
-					<input type="email" id="rEmail" name="rEmail" value="foo@bar">
+					<input type="email" id="rEmail" name="rEmail">
 					
 					<input type="radio" id="Amazon" name="giftCard" value="Amazon">
 					<label for="Amazon">Amazon</label>
@@ -47,23 +41,19 @@
 					<input type="radio" id="Starbucks" name="giftCard" value="Starbucks">
 					<label for="Starbucks">Starbucks</label>
 					
-					<input type="radio" id="Netflix" name="giftCard" value="Netflix" checked>
+					<input type="radio" id="Netflix" name="giftCard" value="Netflix">
 					<label for="Netflix">Netflix</label>
 					
 					<input type="radio" id="Target" name="giftCard" value="Target">
 					<label for="Target">Target</label>
 					
 					<label for="Amount"> Amount: $</label>
-					<input type="number" id="Amount" name ="Amount" value ="1000">
-				</div>		
+					<input type="number" id="Amount" name ="Amount">
+				</div>	
+				<button id="placeOrder" type='submit' style="width: 120px; margin-top: 5px; margin-bottom: 4px; margin-left: 620px;">Place Order</button>	
 			</form>
 			<input type="button" id="addLines" value="+">Add Lines</button><br>
 			<br/>
-
-		</div>
-		
-			<button id="placeOrder" style="width: 120px; margin-top: 5px; margin-bottom: 4px; margin-left: 620px;">Place Order</button>
-		</div>
 		<br/>
 	<h3>Order placed!</h3>
     <table>
@@ -76,7 +66,7 @@
             <th>amount</th>  
         </thead> 
         <tbody>
-            {{#each people}} 
+            {{#each orders}} 
             <tr> 
                 <td>{{orderID}}</td> 
                 <td>{{trackerID}}</td> 
@@ -89,5 +79,4 @@
         </tbody> 
 </table> 
 
-	</body>
 </html>
