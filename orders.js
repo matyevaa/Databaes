@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
 
-
+    // used to get the orderID, trackerID, Sender Email, Recipient Email, Gift Card name, and amount of ever order
     function getOrders(res, mysql, context, complete){
         mysql.pool.query("SELECT OrderHistory.orderID, orders.trackerID, OrderHistory.sender_email as sender_email, orders.recipient_email as recipient_email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN OrderHistory ON orders.orderID = OrderHistory.orderID LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID", function(error, results, fields){
             if(error){
@@ -15,6 +15,7 @@ module.exports = function(){
         });
     }
 
+    // used to get the latest orderID
     function getOrderID(res, mysql, context, complete){
         mysql.pool.query("SELECT orderID FROM OrderHistory ORDER BY orderID DESC LIMIT 1", function(error, results, fields){
             if(error){
@@ -26,6 +27,7 @@ module.exports = function(){
         });
     }
 
+    // used to get the giftCardID that matches the name of the gift card from the order.
     function getGiftCardID(giftCard, res, mysql, context, complete){
         var giftCard = "SELECT giftCardID FROM GiftCards WHERE name='" + String(giftCard) + "' ORDER BY giftCardID DESC LIMIT 1"
         mysql.pool.query(giftCard, function(error, results, fields){
@@ -38,8 +40,7 @@ module.exports = function(){
         });
     }
 
-    /*Display all people. Requires web based javascript to delete users with AJAX*/
-
+    // gather and display the information from getOrders in a table on the page
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -55,6 +56,7 @@ module.exports = function(){
         }
     });
 
+    // takes all of the info from the order form and inserts the information into the requisite table.  
     router.post('/', function(req, res){
         var callbackCount = 0;
         var context = {};
