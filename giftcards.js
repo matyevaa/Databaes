@@ -1,7 +1,9 @@
 module.exports = function(){
+    // utilize express and router for routes
     var express = require('express');
     var router = express.Router();
 
+    // used to get the giftCard id, name and quantity from the GiftCards table
     function getGiftCards(res, mysql, context, complete){
         mysql.pool.query("SELECT giftCardID as id, name, quantity FROM GiftCards", function(error, results, fields){
             if(error){
@@ -13,6 +15,7 @@ module.exports = function(){
         });
     }
     
+    // a separate query to also get the giftCard id, name and quantity from GiftCards table
     function getGiftCard(res, mysql, context, id, complete){
         var sql = "SELECT giftCardID as id, name, quantity FROM GiftCards WHERE giftCardID=?";
         var inserts = [id];
@@ -26,7 +29,7 @@ module.exports = function(){
         });
     }
 
-    //display giftcards
+    // run the select for the GiftCards page and display the results in a table
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -42,7 +45,7 @@ module.exports = function(){
         }
     });
     
-  /* Adds a giftcard, redirects to the GiftCards page after adding */
+    // Adds a giftcard, redirects to the GiftCards page after adding
     router.post('/', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO GiftCards (name, quantity) VALUES (?,?)";
@@ -58,7 +61,7 @@ module.exports = function(){
         });
     });
     
-    /* Display one giftcard for the specific purpose of updating giftcards*/
+    // Display one giftcard for the specific purpose of updating giftcards
     router.get('/:id', function(req, res){
         callbackCount = 0;
         var context = {};
@@ -74,7 +77,7 @@ module.exports = function(){
         }
     });
     
-    /* The URI that update data is sent to in order to update a giftcard */
+    // The URI that update data is sent to in order to update a giftcard
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
@@ -93,7 +96,7 @@ module.exports = function(){
         });
     });
     
-    /* Route to delete a giftcard, simply returns a 202 upon success. Ajax will handle this. */
+    // Route to delete a giftcard, simply returns a 202 upon success. Ajax will handle this.
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM GiftCards WHERE giftCardID = ?";
