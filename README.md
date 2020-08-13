@@ -8,7 +8,7 @@ Let’s make the last minute gift easier than ever. Instead of going to the stor
 For instance, companies can use these to incentivize people, both externally and internally, acting as a reward for employees and as a marketing tool for potential customers. A database uniquely allows companies to organize and keep track of not only their Orders, but the information of their Recipients as well. It also will help prevent things like fraud and money laundering as it is, itself, a built in record keeper.
 
 # Database Outline
-Senders: the person placing the orders;
+Senders: the person placing the orders;<br/>
 sender_emaill: varchar(20), PK,
 senderID: int, auto_increment, unique, not NULL, 
 relationship: a 1:M relationship between Senders and OrderHistory is implemented with sender_email as a FK inside of OrderHistory.
