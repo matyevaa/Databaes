@@ -9,32 +9,32 @@ For instance, companies can use these to incentivize people, both externally and
 
 # Database Outline
 Senders: the person placing the orders;<br/>
-sender_emaill: varchar(20), PK,
-senderID: int, auto_increment, unique, not NULL, 
-relationship: a 1:M relationship between Senders and OrderHistory is implemented with sender_email as a FK inside of OrderHistory.
+sender_emaill: varchar(20), PK,<br/>
+senderID: int, auto_increment, unique, not NULL, <br/>
+relationship: a 1:M relationship between Senders and OrderHistory is implemented with sender_email as a FK inside of OrderHistory.<br/>
 
-Recipients: the person receiving a reward;
-recipient_email: varchar(20), PK,
-recipientID: int, auto_increment, unique, not NULL,
-relationship: an 1:M relationship between Recipients and Orders is implemented with recipient_email as a FK inside of Orders. 
+Recipients: the person receiving a reward;<br/>
+recipient_email: varchar(20), PK,<br/>
+recipientID: int, auto_increment, unique, not NULL,<br/>
+relationship: an 1:M relationship between Recipients and Orders is implemented with recipient_email as a FK inside of Orders. <br/>
 
-GiftCards: a gift card sent from a sender to a recipient;
-giftCardID: int(11), auto_increment, unique, not NULL, PK,
-name: varchar(20), not NULL,
-quantity: int(11),
-relationship: an M:M relationship between GiftCards and Orders with giftCardID as FK inside of Orders.
+GiftCards: a gift card sent from a sender to a recipient;<br/>
+giftCardID: int(11), auto_increment, unique, not NULL, PK,<br/>
+name: varchar(20), not NULL,<br/>
+quantity: int(11),<br/>
+relationship: an M:M relationship between GiftCards and Orders with giftCardID as FK inside of Orders.<br/>
 
-Orders: the order placed that sends a gift card from the sender to the recipient;
-trackerID: int(11), auto_increment, unique, not NULL, PK,
-orderID: int(11), not NULL, FK,
-giftCardID: int(11), not NULL, FK,
-recipient_email: varchar(20), FK,
-price: int(11), not NULL,
-Relationships: an M-to-1 relationship with OrderHistory with orderID as FK in OrderHistory
-Relationships: an M-to-M relationship with GiftCards with giftCardID as FK in Orders.
+Orders: the order placed that sends a gift card from the sender to the recipient;<br/>
+trackerID: int(11), auto_increment, unique, not NULL, PK,<br/>
+orderID: int(11), not NULL, FK,<br/>
+giftCardID: int(11), not NULL, FK,<br/>
+recipient_email: varchar(20), FK,<br/>
+price: int(11), not NULL,<br/>
+Relationships: an M-to-1 relationship with OrderHistory with orderID as FK in OrderHistory<br/>
+Relationships: an M-to-M relationship with GiftCards with giftCardID as FK in Orders.<br/>
 
-OrderHistory: A table to keep track of the gift cards associated with an order;
-orderID: int(11), not NULL, auto_increment, unique, PK,
-sender_email: varchar(20), FK,
-quantity: int(11), not NULL,
+OrderHistory: A table to keep track of the gift cards associated with an order;<br/>
+orderID: int(11), not NULL, auto_increment, unique, PK,<br/>
+sender_email: varchar(20), FK,<br/>
+quantity: int(11), not NULL,<br/>
 Relationship: a 1-to-M relationship with Senders with sender_email as FK inside of OrderHistory.
