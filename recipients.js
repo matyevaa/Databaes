@@ -3,8 +3,8 @@ module.exports = function(){
     var router = express.Router();
 
 
-
-    function getPeople(res, mysql, context, complete){
+    // get the orderID, trackerID, Recipient Email, Gift Card name, and amount from every order placed
+    function getRecipients(res, mysql, context, complete){
         mysql.pool.query("SELECT OrderHistory.orderID, orders.trackerID, orders.recipient_email as email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN recipients ON orders.recipient_email = recipients.recipient_email LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID", function(error, results, fields){
             if(error){
                 res.write(JSON.stringify(error));
@@ -15,8 +15,8 @@ module.exports = function(){
         });
     }
 
-    /* Find people whose fname starts with a given string in the req */
-    function getPeopleWithNameLike(req, res, mysql, context, complete) {
+    // get the order info for specifically the recipient entered in the search
+    function getRecipientsSearch(req, res, mysql, context, complete) {
       //sanitize the input as well as include the % character
        var query = "SELECT OrderHistory.orderID, orders.trackerID, orders.recipient_email as email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN recipients ON orders.recipient_email = recipients.recipient_email LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID WHERE orders.recipient_email LIKE " + mysql.pool.escape(req.params.s + '%');
 
@@ -30,14 +30,14 @@ module.exports = function(){
         });
     }
 
-    /*Display all people. Requires web based javascript to delete users with AJAX*/
 
+    // get and display the order info in a table on the page
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
         context.jsscripts = ["deleterecipient.js","search_recipients.js"];
         var mysql = req.app.get('mysql');
-        getPeople(res, mysql, context, complete);
+        getRecipients(res, mysql, context, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){
@@ -47,12 +47,13 @@ module.exports = function(){
         }
     });
 
+    //get and display the order info of the recipient searched on the page
     router.get('/search/:s', function(req, res){
         var callbackCount = 0;
         var context = {};
         context.jsscripts = ["search_recipients.js"];
         var mysql = req.app.get('mysql');
-        getPeopleWithNameLike(req, res, mysql, context, complete);
+        getRecipientsSearch(req, res, mysql, context, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 1){
