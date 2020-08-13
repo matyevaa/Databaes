@@ -2,7 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
-
+    // get the Sender email, Gift Card name, and amount from every order
     function getSenders(res, mysql, context, complete){
         mysql.pool.query("SELECT senders.sender_email as email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN senders ON senders.sender_email = OrderHistory.sender_email", function(error, results, fields){
             if(error){
@@ -14,7 +14,7 @@ module.exports = function(){
         });
     }
 
-    /* Find people whose fname starts with a given string in the req */
+    // Find people whose fname starts with a given string in the req
     function getSendersByEmail(req, res, mysql, context, complete) {
       //sanitize the input as well as include the % character
        var query = "SELECT senders.sender_email as email, GiftCards.name, orders.price as amount FROM orders LEFT JOIN OrderHistory ON OrderHistory.orderID = orders.orderID LEFT JOIN GiftCards ON GiftCards.giftCardID = orders.giftCardID LEFT JOIN senders ON senders.sender_email = OrderHistory.sender_email WHERE senders.sender_email LIKE " + mysql.pool.escape(req.params.s + '%');
@@ -28,8 +28,7 @@ module.exports = function(){
         });
     }
     
-    /*Display all people. Requires web based javascript to delete users with AJAX*/
-
+    //Display all people. Requires web based javascript to delete users with AJAX
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -45,6 +44,7 @@ module.exports = function(){
         }
     });
 
+    // get the order info for the specific sender that was searched
     router.get('/search/:s', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -59,7 +59,7 @@ module.exports = function(){
         }
     });
         
-      /*Adds a sender, redirects to the senders page after adding */
+    //Adds a sender, redirects to the senders page after adding 
     router.post('/', function(req, res){
         var mysql = req.app.get('mysql');
         
